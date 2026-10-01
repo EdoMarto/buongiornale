@@ -1,0 +1,9 @@
+[
+  { "source": "ANSA",           "category": "Prima pagina", "url": "https://www.ansa.it/sito/ansait_rss.xml" },
+  { "source": "Repubblica",      "category": "Prima pagina", "url": "https://www.repubblica.it/rss/homepage/rss2.0.xml" },
+  { "source": "Corriere",        "category": "Prima pagina", "url": "https://xml2.corriereobjects.it/rss/homepage.xml" },
+  { "source": "Sky TG24",        "category": "Prima pagina", "url": "https://tg24.sky.it/rss/tg24.xml" },
+  { "source": "Il Sole 24 Ore",  "category": "Economia",     "url": "https://www.ilsole24ore.com/rss/italia.xml" },
+  { "source": "ANSA Tecnologia", "category": "Tecnologia",   "url": "https://www.ansa.it/sito/notizie/tecnologia/tecnologia_rss.xml" },
+  { "source": "Wired",           "category": "Tecnologia",   "url": "https://www.wired.it/feed/rss" }
+]
