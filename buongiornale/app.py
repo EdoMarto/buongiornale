@@ -83,7 +83,7 @@ def main(argv: list[str] | None = None) -> None:
     config = Config.from_env()
     send = not args.dry_run
     if send and not (config.telegram_token and config.channel):
-        log.warning("TELEGRAM_BOT_TOKEN / TELEGRAM_CHANNEL not set — switching to dry run.")
+        log.warning("TELEGRAM_BOT_TOKEN / TELEGRAM_CHANNEL not set, switching to dry run.")
         send = False
 
     if args.mode == "digest":

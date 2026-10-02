@@ -22,12 +22,12 @@ def italian_date(dt: datetime) -> str:
 
 
 def _headline(article: Article) -> str:
-    return f'• <a href="{html.escape(article.link)}">{html.escape(article.title)}</a> — <i>{html.escape(article.source)}</i>'
+    return f'• <a href="{html.escape(article.link)}">{html.escape(article.title)}</a>, <i>{html.escape(article.source)}</i>'
 
 
 def digest_messages(grouped: dict[str, list[Article]], now: datetime) -> list[str]:
     """One or more messages: a header, then a section per category."""
-    header = f"🗞 <b>Buongiornale</b> — {italian_date(now)}\nLe notizie del giorno dalle principali testate.\n"
+    header = f"🗞 <b>Buongiornale</b>, {italian_date(now)}\nLe notizie del giorno dalle principali testate.\n"
 
     messages: list[str] = []
     current = header
