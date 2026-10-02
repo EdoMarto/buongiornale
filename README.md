@@ -4,33 +4,31 @@
 
 <h1 align="center">Buongiornale</h1>
 
-<p align="center">The day's news from major outlets' RSS feeds, posted to a Telegram channel.</p>
+<p align="center">The day's news from the main outlets' RSS feeds, posted to a Telegram channel.</p>
 
----
-
-Buongiornale reads the RSS feeds of major Italian news outlets, removes duplicates, and posts the news
-to a Telegram channel — like [@BuonGiornale](https://t.me/BuonGiornale). There is no web frontend: the
-Telegram channel *is* the newspaper.
+Buongiornale reads the RSS feeds of the main Italian news outlets, drops the duplicates, and posts the
+news to a Telegram channel, like [@BuonGiornale](https://t.me/BuonGiornale). There's no website: the
+Telegram channel is the newspaper.
 
 ## Two modes
 
-- **`digest`** — a morning roundup: the last 24 hours grouped by section (front page, economy, tech) in
-  one message. Run once a day.
-- **`stream`** — posts each new article as it appears, one per message. Run often; it remembers what it
-  already sent and never reposts.
+* `digest` is the morning roundup. It takes the last 24 hours, groups them by section (front page,
+  economy, tech) and sends it as one message. Run it once a day.
+* `stream` posts each new article as it shows up, one per message. Run it often; it remembers what it
+  already sent, so nothing goes out twice.
 
 ## Setup
 
-Requires Python 3.10+.
+You need Python 3.10 or newer.
 
 ```bash
 pip install -r requirements.txt
 cp .env.example .env      # then fill it in
 ```
 
-1. Create a bot with [@BotFather](https://t.me/BotFather) → `TELEGRAM_BOT_TOKEN`.
-2. Add the bot as an **admin** of your channel.
-3. Put the channel in `TELEGRAM_CHANNEL` (e.g. `@BuonGiornale`).
+1. Create a bot with [@BotFather](https://t.me/BotFather) and copy the token into `TELEGRAM_BOT_TOKEN`.
+2. Add the bot to your channel as an admin so it can post.
+3. Put the channel in `TELEGRAM_CHANNEL`, for example `@BuonGiornale`.
 
 ## Run
 
@@ -40,9 +38,9 @@ python -m buongiornale digest             # post the morning roundup
 python -m buongiornale stream             # post new articles since the last run
 ```
 
-Without the Telegram variables set, it prints instead of posting.
+If the Telegram variables aren't set, it just prints instead of posting.
 
-Schedule it with cron (or Windows Task Scheduler), e.g. the digest every morning:
+Run it on a schedule with cron (or Windows Task Scheduler). For example, the digest every morning:
 
 ```cron
 0 7 * * * cd /path/to/buongiornale && /path/to/python -m buongiornale digest
@@ -50,13 +48,14 @@ Schedule it with cron (or Windows Task Scheduler), e.g. the digest every morning
 
 ## Feeds
 
-Outlets live in [`feeds.json`](feeds.json), each with a source and a category. Add one with a line:
+The outlets live in [`feeds.json`](feeds.json), each with a source and a category. Adding one is a single
+line:
 
 ```json
 { "source": "Il Post", "category": "Front page", "url": "https://www.ilpost.it/feed/" }
 ```
 
-It posts the title, outlet and a link to the original article — never the full text.
+It only posts the title, the outlet and a link to the original article, never the full text.
 
 ## Tests
 
@@ -64,9 +63,9 @@ It posts the title, outlet and a link to the original article — never the full
 pytest
 ```
 
-## Tech stack
+## Built with
 
-Python · feedparser · Telegram Bot API · SQLite
+Python, feedparser and the Telegram Bot API.
 
 ## License
 
