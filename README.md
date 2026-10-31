@@ -4,6 +4,13 @@
 
 <h1 align="center">Buongiornale</h1>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10+-blue" alt="Python">
+  <img src="https://img.shields.io/badge/Telegram-channel-26A5E4" alt="Telegram">
+  <img src="https://img.shields.io/github/last-commit/EdoMarto/buongiornale" alt="Last commit">
+  <img src="https://img.shields.io/github/stars/EdoMarto/buongiornale" alt="Stars">
+</p>
+
 <p align="center">The day's news from the main outlets' RSS feeds, posted to a Telegram channel.</p>
 
 Buongiornale reads the RSS feeds of the main Italian news outlets, drops the duplicates, and posts the
