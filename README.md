@@ -14,8 +14,7 @@
 <p align="center">The day's news from the main outlets' RSS feeds, posted to a Telegram channel.</p>
 
 Buongiornale reads the RSS feeds of the main Italian news outlets, drops the duplicates, and posts the
-news to a Telegram channel, like [@BuonGiornale](https://t.me/BuonGiornale). There's no website: the
-Telegram channel is the newspaper.
+news to a Telegram channel, like [@BuonGiornale](https://t.me/BuonGiornale).
 
 ## Two modes
 
