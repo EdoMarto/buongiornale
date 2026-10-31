@@ -13,7 +13,6 @@ class Article:
     source: str  # outlet name, e.g. "ANSA"
     category: str  # e.g. "Prima pagina", "Economia"
     published: datetime
-    summary: str = ""
 
     @property
     def key(self) -> str:

@@ -29,25 +29,35 @@ def fetch(feeds: list[dict]) -> list[Article]:
     """Download every feed and flatten it into Article objects."""
     articles: list[Article] = []
     for feed in feeds:
-        parsed = feedparser.parse(feed["url"])
-        if getattr(parsed, "status", 200) >= 400 or not parsed.entries:
-            log.warning("Feed %s returned no entries (status %s)", feed["source"], getattr(parsed, "status", "?"))
-            continue
-        for entry in parsed.entries:
-            title = (entry.get("title") or "").strip()
-            link = (entry.get("link") or "").strip()
-            if not title or not link:
+        try:
+            url = (feed.get("url") or "").strip()
+            source = (feed.get("source") or "?").strip()
+            category = (feed.get("category") or "").strip()
+            if not url or not category:
+                log.warning("Skipping feed with missing url/category: %r", feed)
                 continue
-            articles.append(
-                Article(
-                    title=title,
-                    link=link,
-                    source=feed["source"],
-                    category=feed["category"],
-                    published=_published(entry),
-                    summary=(entry.get("summary") or "").strip(),
+            parsed = feedparser.parse(url)
+            if getattr(parsed, "status", 200) >= 400 or not parsed.entries:
+                log.warning("Feed %s returned no entries (status %s)", source, getattr(parsed, "status", "?"))
+                continue
+            for entry in parsed.entries:
+                title = (entry.get("title") or "").strip()
+                link = (entry.get("link") or "").strip()
+                if not title or not link:
+                    continue
+                articles.append(
+                    Article(
+                        title=title,
+                        link=link,
+                        source=source,
+                        category=category,
+                        published=_published(entry),
+                    )
                 )
-            )
+        except Exception:
+            # One bad feed or malformed entry should not abort the whole run.
+            log.exception("Failed to process feed %r", feed)
+            continue
     log.info("Fetched %d articles from %d feeds", len(articles), len(feeds))
     return articles
 
