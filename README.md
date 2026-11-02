@@ -32,9 +32,10 @@ pip install -r requirements.txt
 cp .env.example .env      # then fill it in
 ```
 
-1. Create a bot with [@BotFather](https://t.me/BotFather) and copy the token into `TELEGRAM_BOT_TOKEN`.
-2. Add the bot to your channel as an admin so it can post.
-3. Put the channel in `TELEGRAM_CHANNEL`, for example `@BuonGiornale`.
+1. Open telegram
+2. Create a bot with [@BotFather](https://t.me/BotFather) and copy the token into `TELEGRAM_BOT_TOKEN`.
+3. Add the bot to your channel as an admin so it can post.
+4. Put the channel in `TELEGRAM_CHANNEL`, for example `@BuonGiornale`.
 
 ## Run
 
